@@ -1,56 +1,73 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Породы собак</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Выберите породу:</h2>
-        <div class="inner">
-            <div class="item">
-                <img src="1.png" alt="Лабрадор" class="img">
-                <button class="btn" id="btn1">Лабрадор</button>
+    <header>
+        <h1>🐕 Мир собак</h1>
+        <p>Выбери породу и узнай о ней больше</p>
+    </header>
+
+    <main class="container">
+        <div class="dogs">
+            <div class="dog-card">
+                <img src="images/labrador.jpg" alt="Лабрадор">
+                <h3>Лабрадор</h3>
+                <button data-dog="labrador">Выбрать</button>
             </div>
-            <div class="item">
-                <img src="2.png" alt="Немецкая овчарка" class="img">
-                <button class="btn" id="btn2">Немецкая овчарка</button>
+
+            <div class="dog-card">
+                <img src="images/shepherd.jpg" alt="Немецкая овчарка">
+                <h3>Немецкая овчарка</h3>
+                <button data-dog="shepherd">Выбрать</button>
             </div>
-            <div class="item">
-                <img src="3.png" alt="Хаски" class="img">
-                <button class="btn" id="btn3">Хаски</button>
+
+            <div class="dog-card">
+                <img src="images/husky.jpg" alt="Хаски">
+                <h3>Хаски</h3>
+                <button data-dog="husky">Выбрать</button>
             </div>
-            <div class="item">
-                <img src="4.png" alt="Мопс" class="img">
-                <button class="btn" id="btn4">Мопс</button>
+
+            <div class="dog-card">
+                <img src="images/pug.jpg" alt="Мопс">
+                <h3>Мопс</h3>
+                <button data-dog="pug">Выбрать</button>
             </div>
-            <div class="item">
-                <img src="5.png" alt="Бульдог" class="img">
-                <button class="btn" id="btn5">Бульдог</button>
+
+            <div class="dog-card">
+                <img src="images/bulldog.jpg" alt="Бульдог">
+                <h3>Бульдог</h3>
+                <button data-dog="bulldog">Выбрать</button>
             </div>
-            <div class="item">
-                <img src="6.png" alt="Такса" class="img">
-                <button class="btn" id="btn6">Такса</button>
+
+            <div class="dog-card">
+                <img src="images/dachshund.jpg" alt="Такса">
+                <h3>Такса</h3>
+                <button data-dog="dachshund">Выбрать</button>
             </div>
-            <div class="item">
-                <img src="7.png" alt="Пудель" class="img">
-                <button class="btn" id="btn7">Пудель</button>
+
+            <div class="dog-card">
+                <img src="images/poodle.jpg" alt="Пудель">
+                <h3>Пудель</h3>
+                <button data-dog="poodle">Выбрать</button>
             </div>
-            <div class="item">
-                <img src="8.png" alt="Чихуахуа" class="img">
-                <button class="btn" id="btn8">Чихуахуа</button>
+
+            <div class="dog-card">
+                <img src="images/chihuahua.jpg" alt="Чихуахуа">
+                <h3>Чихуахуа</h3>
+                <button data-dog="chihuahua">Выбрать</button>
             </div>
         </div>
-    </div>
-    
-    <!-- ДОБАВЛЕНА ОБЫЧНАЯ КНОПКА ВНИЗУ -->
-    <button id="sendBtn" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#2cab37; color:white; padding:15px; border:none; font-size:16px; font-weight:bold; cursor:pointer;">
-        Вывести информацию
-    </button>
-    
+
+        <p id="status">Нажми «Выбрать» у понравившейся породы.</p>
+    </main>
+
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js?v=400"></script>
+    <script src="app.js"></script>
 </body>
 </html>
