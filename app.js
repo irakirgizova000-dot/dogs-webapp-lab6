@@ -6,7 +6,6 @@ tg.MainButton.color = "#2cab37";
 
 let item = "";
 
-// Массив ID кнопок
 let buttons = [
     {id: "btn1", name: "Лабрадор", data: "Лабрадор"},
     {id: "btn2", name: "Немецкая овчарка", data: "Немецкая овчарка"},
@@ -18,21 +17,24 @@ let buttons = [
     {id: "btn8", name: "Чихуахуа", data: "Чихуахуа"}
 ];
 
-// Добавляем обработчики для всех кнопок
 buttons.forEach(function(btn) {
     let button = document.getElementById(btn.id);
-    button.addEventListener("click", function(){
-        if(tg.MainButton.isVisible){
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.setText("Вывести информацию о " + btn.name);
-            item = btn.data;
-            tg.MainButton.show();
-        }
-    });
+    if (button) {
+        button.addEventListener("click", function(){
+            if(tg.MainButton.isVisible){
+                tg.MainButton.hide();
+            } else {
+                tg.MainButton.setText("Вывести информацию о " + btn.name);
+                item = btn.data;
+                tg.MainButton.show();
+            }
+        });
+    }
 });
 
-// При нажатии на главную кнопку отправляем данные
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
+// ИСПРАВЛЕННЫЙ ОБРАБОТЧИК - используем tg.onEvent вместо Telegram.WebApp.onEvent
+tg.onEvent("mainButtonClicked", function(){
+    console.log("=== MAIN BUTTON CLICKED ===");
+    console.log("Отправляем данные: " + item);
     tg.sendData(item);
 });
