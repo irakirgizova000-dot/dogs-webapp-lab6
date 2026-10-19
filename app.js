@@ -1,4 +1,4 @@
-console.log("=== app.js ЗАГРУЖЕН ===");
+console.log("=== app.js ЗАГРУЖЕН v2 ===");
 
 let tg = window.Telegram.WebApp;
 tg.expand();
@@ -19,17 +19,13 @@ let buttons = [
     {id: "btn8", name: "Чихуахуа", data: "Чихуахуа"}
 ];
 
-console.log("Создаем обработчики для кнопок...");
-
 buttons.forEach(function(btn) {
     let button = document.getElementById(btn.id);
     if (button) {
-        console.log("Кнопка найдена: " + btn.id + " (" + btn.name + ")");
         button.addEventListener("click", function(){
             console.log("=== КНОПКА НАЖАТА: " + btn.name + " ===");
             if(tg.MainButton.isVisible){
                 tg.MainButton.hide();
-                console.log("MainButton скрыта");
             } else {
                 tg.MainButton.setText("Вывести информацию о " + btn.name);
                 item = btn.data;
@@ -37,21 +33,19 @@ buttons.forEach(function(btn) {
                 console.log("MainButton показана. Данные: " + item);
             }
         });
-    } else {
-        console.error("ОШИБКА: Кнопка не найдена: " + btn.id);
     }
 });
 
-// ВАЖНО: используем tg.onEvent вместо Telegram.WebApp.onEvent
-tg.onEvent("mainButtonClicked", function(){
-    console.log("=== MAIN BUTTON CLICKED ===");
+// НОВЫЙ СПОСОБ: используем tg.MainButton.onClick()
+tg.MainButton.onClick(function(){
+    console.log("=== MAIN BUTTON CLICKED (onClick) ===");
     console.log("Отправляем данные: " + item);
     if (item) {
         tg.sendData(item);
-        console.log("Данные отправлены через tg.sendData()");
+        console.log("Данные отправлены!");
     } else {
         console.error("ОШИБКА: item пустой!");
     }
 });
 
-console.log("=== app.js ГОТОВ К РАБОТЕ ===");
+console.log("=== app.js v2 ГОТОВ ===");
