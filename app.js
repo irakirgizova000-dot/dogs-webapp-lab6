@@ -1,5 +1,3 @@
-console.log("=== app.js ЗАГРУЖЕН v2 ===");
-
 let tg = window.Telegram.WebApp;
 tg.expand();
 
@@ -23,29 +21,17 @@ buttons.forEach(function(btn) {
     let button = document.getElementById(btn.id);
     if (button) {
         button.addEventListener("click", function(){
-            console.log("=== КНОПКА НАЖАТА: " + btn.name + " ===");
             if(tg.MainButton.isVisible){
                 tg.MainButton.hide();
             } else {
                 tg.MainButton.setText("Вывести информацию о " + btn.name);
                 item = btn.data;
                 tg.MainButton.show();
-                console.log("MainButton показана. Данные: " + item);
             }
         });
     }
 });
 
-// НОВЫЙ СПОСОБ: используем tg.MainButton.onClick()
 tg.MainButton.onClick(function(){
-    console.log("=== MAIN BUTTON CLICKED (onClick) ===");
-    console.log("Отправляем данные: " + item);
-    if (item) {
-        tg.sendData(item);
-        console.log("Данные отправлены!");
-    } else {
-        console.error("ОШИБКА: item пустой!");
-    }
+    tg.sendData(item);
 });
-
-console.log("=== app.js v2 ГОТОВ ===");
